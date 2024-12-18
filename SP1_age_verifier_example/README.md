@@ -2,7 +2,7 @@
 
 This guide shows how to:
 
-- Write an SP1 zkVM program that checks if a user is over 21.
+- Write an SP1 zkVM program that checks if a user is 21 or older.
 - Create binary inputs for the program.
 - Run the SP1 program to generate a proof.
 - Verify the proof and view the result.
@@ -65,16 +65,16 @@ pub fn main() {
     let user = io::read::<UserData>();
     println!("Received input: {:?}", user);
 
-    // Step 2: Check if age > 21
-    let is_over_21 = user.age > 21;
-    println!("Committed output (is_over_21): {}", is_over_21);
-    io::commit(&is_over_21);
+    // Step 2: Check if age >= 21
+    let is_21_or_older = user.age >= 21;
+    println!("Committed output (is_21_or_older): {}", is_21_or_older);
+    io::commit(&is_21_or_older);
 
     // Step 3: Output result
-    if is_over_21 {
-        println!("Hello, {}! You are over 21!", user.name);
+    if is_21_or_older {
+        println!("Hello, {}! You are 21 or older!", user.name);
     } else {
-        println!("Hello, {}! You are not over 21.", user.name);
+        println!("Hello, {}! You are younger than 21.", user.name);
     }
 }
 ```
@@ -167,7 +167,7 @@ cargo prove --input input.bin --binary SP1_age_verifier_example
 - **Executing the Program**: SP1 runs the RISC-V binary with the provided input (`input.bin`).
 - **Creating the Proof**: SP1 generates a zero-knowledge proof attesting that:
   - The program executed correctly.
-  - The committed result (`is_over_21`) is correct.
+  - The committed result (`is_21_or_older`) is correct.
 - **Verifying the Proof**: SP1 automatically verifies the proof and confirms its validity.
 
 ## Step 6: View the Output
@@ -176,12 +176,12 @@ The terminal output will look like this:
 
 ```plaintext
 Received input: UserData { name: "Harry Potter", age: 16 }
-Committed output (is_over_21): false
-Hello, Harry Potter! You are not over 21.
+Committed output (is_21_or_older): false
+Hello, Harry Potter! You are younger than 21.
 INFO vk verification: true
 ```
 
-- **Committed output**: `false` means the user did not pass the condition `age > 21`.
+- **Committed output**: `false` means the user did not pass the condition `age >= 21`.
 - **Verification**: `INFO vk verification: true` confirms that the proof was verified successfully.
 
 ## Step 7: Test with Different Inputs
@@ -211,8 +211,8 @@ The output will now show:
 
 ```plaintext
 Received input: UserData { name: "Albus Dumbledore", age: 115 }
-Committed output (is_over_21): true
-Hello, Albus Dumbledore! You are over 21!
+Committed output (is_21_or_older): true
+Hello, Albus Dumbledore! You are 21 or older!
 INFO vk verification: true
 ```
 
@@ -222,7 +222,7 @@ At a high level:
 
 - **Compiling Rust to RISC-V**: SP1 compiles the program into RISC-V instructions for execution in the zkVM.
 - **Proving Execution**: SP1 generates a proof that:
-  - The program logic (`age > 21`) was executed correctly.
+  - The program logic (`age >= 21`) was executed correctly.
   - The committed output (`true` or `false`) matches the program's execution.
 - **Verification**: SP1 verifies the proof to ensure correctness.
 - **Output**: The result (e.g., `true` or `false`) is printed, showing whether the user meets the condition.
@@ -230,7 +230,7 @@ At a high level:
 ## Summary of Steps
 
 1. **Set up the project**: Create a Rust project and add SP1 dependencies.
-2. **Write the SP1 program**: Check `age > 21` and commit the result.
+2. **Write the SP1 program**: Check `age >= 21` and commit the result.
 3. **Generate binary input**: Convert JSON to `input.bin` using a helper script.
 4. **Build and run the program**: Use SP1 to generate and verify the proof.
 5. **View the result**: Verify the proof and output the result.

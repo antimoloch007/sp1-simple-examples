@@ -15,15 +15,15 @@ pub fn main() {
     let user = io::read::<UserData>();
     println!("Received input: {:?}", user);
 
-    // Step 2: Check if age > 21
-    let is_over_21 = user.age > 21;
-    println!("Committed output (is_over_21): {}", is_over_21);
-    io::commit(&is_over_21);
+    // Step 2: Check if age >= 21
+    let is_21_or_older = user.age >= 21;
+    println!("Committed output (is_21_or_older): {}", is_21_or_older);
+    io::commit(&is_21_or_older);
 
     // Step 3: Output result
-    if is_over_21 {
-        println!("Hello, {}! You are over 21!", user.name);
+    if is_21_or_older {
+        println!("Hello, {}! You are 21 or older!", user.name);
     } else {
-        println!("Hello, {}! You are not over 21.", user.name);
+        println!("Hello, {}! You are younger than 21.", user.name);
     }
 }
