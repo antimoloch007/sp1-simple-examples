@@ -1,1 +1,0 @@
-/Users/antimoloch/Desktop/sp1tests/SP1_age_verifier_example/target/elf-compilation/riscv32im-succinct-zkvm-elf/release/SP1_age_verifier_example: /Users/antimoloch/Desktop/sp1tests/SP1_age_verifier_example/src/main.rs
