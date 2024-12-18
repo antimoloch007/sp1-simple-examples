@@ -181,7 +181,7 @@ Hello, Harry Potter! You are not over 21.
 INFO vk verification: true
 ```
 
-- **Committed output**: `false` means the user passed the condition `age < 21`.
+- **Committed output**: `false` means the user did not pass the condition `age > 21`.
 - **Verification**: `INFO vk verification: true` confirms that the proof was verified successfully.
 
 ## Step 7: Test with Different Inputs
