@@ -1,8 +1,0 @@
-[package]
-name = "sp1_addition"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-sp1-zkvm = "3.0.0-rc4"   # Use the latest release candidate
-
