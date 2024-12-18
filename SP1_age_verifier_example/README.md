@@ -177,7 +177,7 @@ The terminal output will look like this:
 ```plaintext
 Received input: UserData { name: "Harry Potter", age: 16 }
 Committed output (is_over_21): false
-Hello, Austin! You are not over 21.
+Hello, Harry Potter! You are not over 21.
 INFO vk verification: true
 ```
 
@@ -212,7 +212,7 @@ The output will now show:
 ```plaintext
 Received input: UserData { name: "Albus Dumbledore", age: 115 }
 Committed output (is_over_21): true
-Hello, Austin! You are over 21!
+Hello, Albus Dumbledore! You are over 21!
 INFO vk verification: true
 ```
 
