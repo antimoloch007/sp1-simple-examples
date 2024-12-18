@@ -34,7 +34,7 @@ Add the SP1 dependencies in `Cargo.toml`:
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 bincode = "1.3"
-sp1-zkvm = "0.1" # Replace with your SP1 version
+sp1-zkvm = "3.0.0-rc4"   # Use the latest release candidate
 
 [[bin]]
 name = "generate_input"
@@ -124,8 +124,8 @@ Add `input.json` in the project root with this content:
 
 ```json
 {
-    "name": "Austin",
-    "age": 22
+    "name": "Harry Potter",
+    "age": 16
 }
 ```
 
@@ -146,7 +146,7 @@ cargo run --bin generate_input
 To prepare for execution, build the SP1 program:
 
 ```bash
-cargo prove build --binary sp1_age_verifier_example
+cargo prove build --binary SP1_age_verifier_example
 ```
 
 ### What SP1 is Doing:
@@ -159,7 +159,7 @@ cargo prove build --binary sp1_age_verifier_example
 Run the SP1 program with the binary input:
 
 ```bash
-cargo prove --input input.bin --binary sp1_age_verifier_example
+cargo prove --input input.bin --binary SP1_age_verifier_example
 ```
 
 ### What SP1 is Doing:
@@ -190,8 +190,8 @@ Modify `input.json`:
 
 ```json
 {
-    "name": "Austin",
-    "age": 19
+    "name": "Albus Dumbledore",
+    "age": 115
 }
 ```
 
@@ -204,7 +204,7 @@ cargo run --bin generate_input
 Run the SP1 program again:
 
 ```bash
-cargo prove --input input.bin --binary sp1_age_verifier_example
+cargo prove --input input.bin --binary SP1_age_verifier_example
 ```
 
 The output will now show:
