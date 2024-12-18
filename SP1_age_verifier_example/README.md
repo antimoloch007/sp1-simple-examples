@@ -175,9 +175,9 @@ cargo prove --input input.bin --binary SP1_age_verifier_example
 The terminal output will look like this:
 
 ```plaintext
-Received input: UserData { name: "Austin", age: 22 }
-Committed output (is_over_21): true
-Hello, Austin! You are over 21!
+Received input: UserData { name: "Harry Potter", age: 16 }
+Committed output (is_over_21): false
+Hello, Austin! You are not over 21.
 INFO vk verification: true
 ```
 
@@ -210,9 +210,9 @@ cargo prove --input input.bin --binary SP1_age_verifier_example
 The output will now show:
 
 ```plaintext
-Received input: UserData { name: "Austin", age: 19 }
-Committed output (is_over_21): false
-Hello, Austin! You are not over 21.
+Received input: UserData { name: "Albus Dumbledore", age: 115 }
+Committed output (is_over_21): true
+Hello, Austin! You are over 21!
 INFO vk verification: true
 ```
 
